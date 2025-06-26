@@ -18,4 +18,18 @@ Note that:
 - $s(\phi)$ is the sign of whether the formula $\phi$ is satisfied on a certain set of trajectories;
 - $\text{diff}(s(\phi), s(\hat{\phi})) = 0$ if the original formula $\phi$ and the recostructed one $\hat{\phi}$ are satisfied or unsatisfied on the same set of trajectories.
 
+The obtained results for $\text{cos}(\rho(\phi), \rho(\hat{\phi}))$ are the following: `random` and `random-small` (similar values but bigger spread) are the best performing ones, followed by `easyskewed` (even spreader), `balanced`, `balanced-small`, `easyskewed-small`, `hardskewed-small` and `hardskewed`. The vector database is slightly worse than `random-small`. 
 
+Similar trends are observed also for $\text{diff}(s(\phi), s(\hat{\phi}))$. Possible questions are the following:
+
+
+
+
+## Other ideas
+- per un set fisso di esempi di test (preferibilmente semanticamente diversi), guarda gli hidden states e visualizzali via t-SNE, UMAP o PCA (su diversi steps) per vedere se e quando emergono cluster semantici distinti;
+- guarda le matrici di attenzione nei vari layer per capire su quali token (simboli) si concentra il modello mentre ricostruisce la formula;
+- determina quali parti dell’input embedding sono più importanti per la generazione dell’output con LRP o Integrated Gradients o Attention Rollout?
+- se esce qualcosa, fai una ablation su alcune parti degli input embedding e vedi cosa cambia;
+- guarda se formule sintatticamente simili ma semanticamente molto diverse vengono mappate in vettori simili;
+- prendi formule semanticamente uguali ma con diversi livelli di complessità e valuta cosa accade;
+- 
